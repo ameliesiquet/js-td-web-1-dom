@@ -35,7 +35,19 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference
 	* centrez-y le texte ;
 */
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    const premierParagraphe = document.querySelector('p');
+    premierParagraphe.style.color='#813050'
+    premierParagraphe.style.marginTop = '1em';
+    premierParagraphe.style.marginBottom = '1em';
+    premierParagraphe.style.background="#D8EFE3"
+    premierParagraphe.style.padding="O.5em"
+    premierParagraphe.style.fontFamily = 'Baskerville, Baskerville Old Face, Garamond, Hoefler Text, Times New Roman, serif';
+    premierParagraphe.style.fontSize = '2em';
+    premierParagraphe.style.width = '5em';
+    premierParagraphe.style.margin = 'auto';
+    premierParagraphe.style.textAlign = 'center';
+});
 
 
 // B. ACCÉDER AU STYLE D'UN ÉLÉMENT
@@ -49,7 +61,14 @@ elle ne permet donc pas d'accéder aux styles qui se trouvent dans une feuille d
 /* EXERCICE 2 :
 Affichez la couleur du texte de chacun des trois paragraphes de la page
 */
+document.addEventListener('DOMContentLoaded', function() {
+    const paragraphs = document.querySelectorAll('p');
 
+    paragraphs.forEach(paragraph => {
+        const computedStyle = window.getComputedStyle(paragraph);
+        console.log(`Couleur: ${computedStyle.color}`);
+    });
+});
 // 1. Les limites de la propriété style
 
 
@@ -64,3 +83,11 @@ La fonction window.getComputedStyle() (https://developer.mozilla.org/fr/docs/Web
 /* EXEFCICE 3 :
 Affichez la police de caractère et la couleur du 3e paragraphe (qui a l'id "para")
 */
+document.addEventListener('DOMContentLoaded', function() {
+    const thirdParagraph = document.getElementById('para');
+
+    const computedStyle = window.getComputedStyle(thirdParagraph);
+    console.log(`Font family: ${computedStyle.fontFamily}`);
+    console.log(`Couleur: ${computedStyle.color}`);
+});
+

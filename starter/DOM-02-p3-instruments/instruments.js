@@ -19,6 +19,42 @@ SOURCE : https://github.com/oc-courses/javascript-web
     - si l'élément d'id "trompette" possède la classe "cuivre" (doit afficher true)
     - si l'élément d'id "contrebasse" possède la classe "cordes" (doit afficher "Aucun élément ne possède l'id contrebasse")
 */
+//?????
+document.addEventListener('DOMContentLoaded', function() {
+    function getInfosLiens() {
+        const liens = document.querySelectorAll('a');
+        console.log(`Nombre total de liens dans la page web : ${liens.length}`);
+        console.log(`Cible du premier lien : ${liens[0].href}`);
+        console.log(`Cible du dernier lien : ${liens[liens.length - 1].href}`);
+    }
+
+    getInfosLiens();
+
+    const nouvelInstrument2 = document.createElement('li');
+    nouvelInstrument2.id = 'piano';
+    nouvelInstrument2.className = 'pianoclass';
+    nouvelInstrument2.innerHTML = 'Le <a href="https://fr.wikipedia.org/wiki/piano">piano</a>';
+    getInfosLiens()
+
+    const instrumentsList = document.querySelector('#instruments');
+    instrumentsList.appendChild(nouvelInstrument2);
+
+    function possede(idElement, classe) {
+        const element = document.getElementById(idElement);
+        if (element) {
+            return element.classList.contains(classe);
+        } else {
+            return `Aucun élément ne possède l'id ${idElement}`;
+        }
+    }
+
+    // Test de la fonction possede
+    console.log(possede('saxophone', 'bois')); // true
+    console.log(possede('saxophone', 'cuivre')); // false
+    console.log(possede('trompette', 'cuivre')); // true
+    console.log(possede('contrebasse', 'cordes')); // Aucun élément ne possède l'id contrebasse
+});
+
 
 
 

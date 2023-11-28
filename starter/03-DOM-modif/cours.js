@@ -22,8 +22,16 @@ EXERCICE 1 :
 	(Aide : on lui ajoute (opérateur+=) une entrée sous la forme d'une balise <li>)
 3. Vider la liste de tout son contenu et la réafficher
 */
+document.addEventListener('DOMContentLoaded', function() {
+    const ulElt = document.getElementById('langages');
+    console.log(ulElt);
 
+    ulElt.innerHTML+='<li>C</li>'
+    console.log(ulElt)
 
+    ulElt.innerHTML+='';
+    console.log(ulElt)
+});
 
 
 
@@ -36,6 +44,13 @@ EXERCICE 2 :
 Compléter le titre du document pour qu'il devienne
 "Quelques langages de programmation" et le réafficher
 */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const titre = document.querySelector('h1');
+    titre.textContent = 'Quelques langages de programmation';
+    console.log(titre.textContent);
+});
+
 
 
 
@@ -53,6 +68,15 @@ EXERCICE 3 :
 	- avec la méthode setAttribute()
 	- via la propriété id de l'élément h1
 */
+document.addEventListener('DOMContentLoaded', function() {
+    const  titreElt = document.querySelector('h1');
+    titreElt.setAttribute('id', 'titre');
+    console.log(titreElt)
+
+    titreElt.id = 'titre';
+    console.log(titreElt);
+});
+
 
 
 
@@ -72,6 +96,12 @@ EXERCICE 4 :
 - Lui ajouter la classe "titre"
 - L'afficher
 */
+document.addEventListener('DOMContentLoaded', function() {
+    const titreElt2 = document.querySelector('h1');
+    titreElt2.classList.remove('debut');
+    titreElt2.classList.add('titre');
+
+});
 
 
 
@@ -84,6 +114,17 @@ EXERCICE 5 :
 - Ajouter la classe "hide" manuellement dans le fichier HTML
 - Retester le script
 */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const liElt = document.querySelector('li');
+
+    if (liElt.classList.contains('hide')){
+        liElt.classList.remove('hide');
+    }else{
+        liElt.classList.add('hide');
+    };
+});
+// => class ='' wenn auch manuell hinzu fügt danach
 
 
 
@@ -120,7 +161,17 @@ Ajouter le langage "ruby" à la liste des langages :
 - 3. L'ajouter dans l'ul d'id "langages"
 - 4. Afficher le contenu HTML de l'ul
 */
+document.addEventListener('DOMContentLoaded', function() {
+    const rubyElt = document.createElement('li');
+    rubyElt.id ='python';
+    rubyElt.textContent='Python'
 
+    const ulLanges= document.getElementById('langages');
+    ulLanges.appendChild(rubyElt);
+    console.log(ulLanges.innerHTML)
+
+
+});
 
 
 
@@ -152,8 +203,14 @@ dans une li d'id "javascript" avec la méthode insertAdjacentHTML()
 puis afficher le contenu HTML de l'ul
 */
 
+document.addEventListener('DOMContentLoaded', function() {
+    const nouvelElementHTML = '<li id="javascript">JavaScript</li>';
 
+    const ulLangages = document.getElementById('langages');
+    ulLangages.insertAdjacentHTML('afterbegin', nouvelElementHTML);
+    console.log(ulLangages.innerHTML)
 
+});
 
 
 /***********************************************
@@ -172,8 +229,16 @@ EXERCICE 8 :
 - Remplacer le langage C# par un nouvel élément correspondant au langage CSS
 - Afficher le contenu HTML de la liste ainsi modifiée
 */
+document.addEventListener('DOMContentLoaded', function() {
+    const nouvelElementCSS = document.createElement('li');
+    nouvelElementCSS.textContent='CSS';
 
+    const elementRetirer = document.getElementById('csharp');
 
+    const parent = document.getElementById('langages');
+
+    parent.replaceChild(nouvelElementCSS, elementRetirer);
+});
 
 
 
@@ -188,6 +253,20 @@ EXERCICE 9 :
 - Réaffichez la liste des langages
 */
 
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const elementCSS = document.querySelectorAll('li')[3];
+
+    const parent = document.getElementById('langages');
+
+    parent.removeChild(elementCSS);
+
+    const ulLangages = document.getElementById('langages');
+    console.log(ulLangages.innerHTML);
+
+});
 
 
 
